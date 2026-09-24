@@ -6,7 +6,9 @@
     header("location:../index.php");
     exit;
  }
-
+$students = mysqli_query($conn, "SELECT id FROM users WHERE role ='student'");
+$subjects = mysqli_query($conn, "SELECT id FROM subjects");
+$enrollments = mysqli_query($conn, "SELECT id FROM enrollments");
 
 
 ?>
@@ -63,7 +65,7 @@
         <h2>Admin Dashboard</h2>
 
         <p class="text-muted">
-            Welcome, System Administrator.
+             Welcome, <?php echo htmlspecialchars($_SESSION["full_name"]);?>.
         </p>
 
         <div class="row g-3">
@@ -75,7 +77,7 @@
 
                         <h6>Student Accounts</h6>
 
-                        <h2>10</h2>
+                        <h2><?php echo mysqli_num_rows($students);?></h2>
 
                         <a
                             href="students.html"
@@ -93,7 +95,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h6>Subjects</h6>
+                        <h6><?php echo mysqli_num_rows($subjects);?></h6>
 
                         <h2>8</h2>
 
@@ -113,7 +115,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h6>Enrollments</h6>
+                        <h6><?php echo mysqli_num_rows($enrollments); ?></h6>
 
                         <h2>24</h2>
 

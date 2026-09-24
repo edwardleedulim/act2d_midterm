@@ -1,5 +1,5 @@
- C  student_id INT NOT NULL,REATE DATABASE IF NOT EXISTS edwardlee_act2d;
-USE edwardlee_act2d;
+CREATE DATABASE IF NOT EXISTS edward_leeact2d;
+USE edward_leeact2d;
 
 DROP TABLE IF EXISTS enrollments;
 DROP TABLE IF EXISTS subjects;
@@ -23,6 +23,7 @@ CREATE TABLE subjects (
 
 CREATE TABLE enrollments (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
     subject_id INT NOT NULL,
     UNIQUE(student_id, subject_id),
     FOREIGN KEY (student_id) REFERENCES users(id) ON DELETE CASCADE,
